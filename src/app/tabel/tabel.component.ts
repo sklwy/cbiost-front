@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { TabelDataSource, TabelItem } from './tabel-datasource';
+import { RotasService } from '../services/rotas.service';
+import { TabelaRota } from '../models/tabelaRota.model';
 
 @Component({
   selector: 'app-tabel',
@@ -18,8 +20,14 @@ export class TabelComponent implements AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'filo'];
 
-  constructor() {
+  constructor(private service: RotasService) {
     this.dataSource = new TabelDataSource();
+  }
+
+  ngOnInit(): void {
+    this.service.todas().subscribe((tabelaRota: TabelaRota[]) => {
+      console.table(tabelaRota);
+    });
   }
 
   ngAfterViewInit(): void {
