@@ -9,7 +9,7 @@ import { TabelaRota } from '../models/tabelaRota.model';
 })
 export class RotasService {
   private listaTabela: any[];
-  private url = 'http://localhost:8080/api/acervoBiologico/list';
+  private url = 'http://cbiostapi-env.eba-5narnvu2.sa-east-1.elasticbeanstalk.com/v1/api/tombo/list';
 
   constructor(private httpClient: HttpClient) {
       this.listaTabela = [];
